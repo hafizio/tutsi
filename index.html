@@ -2,22 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>First Component</title>
+  <title>State</title>
+  <link rel="stylesheet" href="css/semantic.css" />
 </head>
 <body>
   <div id="app">
     <h1>Hello Reacters</h1>
   </div>
   <div id="msg"></div>
-  <script src="react.js"></script>
-  <script src="JSXTransformer.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/semantic.js"></script>
+  <script src="js/react.js"></script>
+  <script src="js/JSXTransformer.js"></script>
   <script type="text/jsx">
     /** @jsx React.DOM */
     var MessageBox = React.createClass({
+      getInitialState: function() {
+        return {
+          isVisible: true,
+          titleMessage: 'This is the message'
+        }; 
+      },
       render: function() {
         return(
           <div>
-            <h1>Hello Angularis</h1>
+            <h1 className="ui green">{this.state.titleMessage}</h1>
             <SubMessage />
           </div>
         );
@@ -25,9 +34,15 @@
     });
 
     var SubMessage = React.createClass({
+      getInitialState: function() {
+        return {
+          isVisible: true,
+          label: 'This is the label'
+        }; 
+      },
       render: function() {
         return(
-          <h4>This is the best front end ever</h4>
+          <h4 className="ui label">{this.state.label}</h4>
         );
       }
     });
